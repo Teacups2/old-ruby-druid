@@ -46,7 +46,7 @@ module Druid
     end
 
     def granularity(granularity, time_zone = nil, origin = nil)
-      if granularity.is_a?(Fixnum)
+      if granularity.is_a?(Integer)
         @granularity = {
           type: :duration,
           duration: granularity * 1000,
@@ -103,8 +103,8 @@ module Druid
 
     def create_interval(from, to)
       now = Time.now
-      from = now + from if from.is_a?(Fixnum)
-      to = now + to if to.is_a?(Fixnum)
+      from = now + from if from.is_a?(Integer)
+      to = now + to if to.is_a?(Integer)
 
       "#{from.iso8601}/#{to.iso8601}"
     end
